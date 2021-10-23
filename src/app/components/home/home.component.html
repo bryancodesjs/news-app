@@ -1,0 +1,62 @@
+<section id="adplacement2">
+    <div class="ad">
+        <img class="shadow" src="../../../assets/img/New Project (2).png" alt="">
+    </div>
+    <a class="adlink2 mt-2">Anunciate aqui</a>
+</section>
+
+<div id="results" class="h-100 w-100 p-3">
+    <div class="d-flex flex-column post--wrap 90-on-desktop" *ngFor="let post of posts, let i = index">
+        <div class="post row">
+            <div class="col-lg-4" (click)="readPost(post, i)">
+                <h4>{{ post.title }}</h4>
+                <h5>{{ post.author }}</h5>
+                <p class="muted">{{ post.publishingdate | date:'MM-dd-yy hh:mm a '}}</p>
+            </div>
+            <div class="col-lg-4" (click)="readPost(post, i)">
+                <p class="muted">{{ post.body | slice:0:120}}...</p>
+            </div>
+            <div class="col-lg-3" (click)="readPost(post, i)">
+                <div class="post--img--wrap w-100">
+                    <img class="w-100" [src]="post.coverimage" alt="">
+                </div>
+            </div>
+            <div class="col-lg-1 buttons-col">
+                <div class="round--btn primary" (click)="selectPost(post, i)">
+                    <h5><i class="ri-pencil-line"></i></h5>
+                    <label class="my-tooltip" for="">EDIT POST</label>
+                </div>
+                <div class="round--btn danger"  >
+                    <h5><i class="ri-error-warning-line"></i></h5>
+                    <label class="my-tooltip" for="">REPORT</label>
+                </div>
+                <div class="round--btn danger" (click)="deletePost(post, i)">
+                    <h5><i class="ri-delete-bin-line"></i></h5>
+                    <label class="my-tooltip" for="">DELETE POST</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<section id="reader" class="d-none">
+    <section class="d-flex flex-column wrap" *ngIf="currentPost">
+        <div class="d-flex justify-content-end p-3">
+            <div class="round--btn danger" (click)="closePost()">
+                <h5><i class="ri-close-line"></i></h5>
+            </div>
+        </div>
+        <div class="head d-flex flex-column align-items-center p-3">
+            <h4 class="m-w-700">{{currentPost.title}}</h4>
+            <p>{{currentPost.author}}</p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="image m-w-700">
+                <img [src]="currentPost.coverimage" class="w-100">
+            </div>
+        </div>
+        <div class="d-flex flex-column postbody align-items-center p-3 w-100">
+            <p class="m-w-700">{{currentPost.body}}</p>
+        </div>
+    </section>
+</section>

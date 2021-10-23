@@ -11,14 +11,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ViewArticleComponent } from './components/view-article/view-article.component';
 import { NewArticleComponent } from './components/new-article/new-article.component';
-import {NgxPaginationModule} from 'ngx-pagination'; //pagination module
+import {NgxPaginationModule} from 'ngx-pagination';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component'; //pagination module
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ViewArticleComponent,
-    NewArticleComponent
+    NewArticleComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

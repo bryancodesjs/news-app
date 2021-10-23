@@ -1,4 +1,4 @@
-<section id="adplacement2">
+<section id="adplacement2" class="d-none-on-mobile">
     <div class="ad">
         <img class="shadow" src="../../../assets/img/New Project (2).png" alt="">
     </div>
@@ -22,10 +22,10 @@
                 </div>
             </div>
             <div class="col-lg-1 buttons-col">
-                <div class="round--btn primary" (click)="selectPost(post, i)">
+                <!-- <div class="round--btn primary" (click)="selectPost(post, i)">
                     <h5><i class="ri-pencil-line"></i></h5>
                     <label class="my-tooltip" for="">EDIT POST</label>
-                </div>
+                </div> -->
                 <div class="round--btn danger"  >
                     <h5><i class="ri-error-warning-line"></i></h5>
                     <label class="my-tooltip" for="">REPORT</label>
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="d-flex flex-column postbody align-items-center p-3 w-100">
-            <p class="m-w-700">{{currentPost.body}}</p>
+            <p class="m-w-700 white-space">{{currentPost.body}}</p>
         </div>
     </section>
 </section>

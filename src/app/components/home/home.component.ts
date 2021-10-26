@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/services/news-service.service';
+import { AuthService } from '../../auth.service';
 import { Posts } from '../../models/news.model';
 import { map } from 'rxjs/operators';
 
@@ -20,11 +21,30 @@ export class HomeComponent implements OnInit {
   };
   currentIndex = -1;
   title = '';
-
-  constructor(private news_service: PostsService) { }
+  //AUTHENTICATION VARIABLES
+  email: string = ''//string | any;
+  password: string = ''//string | any;
+  
+  constructor(private news_service: PostsService, public authServe: AuthService) { }
 
   ngOnInit(): void {
     this.retrievePosts();
+  }
+  //AUTHENTICATION METHODS
+  signUp() {
+    this.authServe.signUp(this.email, this.password);
+    this.email = '';
+    this.password = '';
+  }
+
+  signIn() {
+    this.authServe.signIn(this.email, this.password);
+    this.email = '';
+    this.password = '';
+  }
+
+  signOut() {
+    this.authServe.signOut();
   }
 
   //BRING ALL POSTS FROM FIREBASE

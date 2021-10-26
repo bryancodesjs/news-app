@@ -1,49 +1,71 @@
-<section id="adplacement2" class="d-none-on-mobile">
+<!-- <section id="adplacement2" class="d-none-on-mobile">
     <div class="ad">
         <img class="shadow" src="../../../assets/img/New Project (2).png" alt="">
     </div>
     <a class="adlink2 mt-2">Anunciate aqui</a>
-</section>
-
-<div id="results" class="h-100 w-100 p-3">
-    <div class="d-flex flex-column post--wrap 90-on-desktop" *ngFor="let post of posts, let i = index">
-        <div class="post row">
-            <div class="col-lg-4" (click)="readPost(post, i)">
-                <h4>{{ post.title }}</h4>
-                <h5>{{ post.author }}</h5>
-                <p class="muted">{{ post.publishingdate | date:'MM-dd-yy hh:mm a '}}</p>
-            </div>
-            <div class="col-lg-4" (click)="readPost(post, i)">
-                <p class="muted">{{ post.body | slice:0:120}}...</p>
-            </div>
-            <div class="col-lg-3" (click)="readPost(post, i)">
-                <div class="post--img--wrap w-100">
-                    <img class="w-100" [src]="post.coverimage" alt="">
-                </div>
-            </div>
-            <div class="col-lg-1 buttons-col">
-                <!-- <div class="round--btn primary" (click)="selectPost(post, i)">
-                    <h5><i class="ri-pencil-line"></i></h5>
-                    <label class="my-tooltip" for="">EDIT POST</label>
-                </div> -->
-                <div class="round--btn danger"  >
-                    <h5><i class="ri-error-warning-line"></i></h5>
-                    <label class="my-tooltip" for="">REPORT</label>
-                </div>
-                <div class="round--btn danger" (click)="deletePost(post, i)">
-                    <h5><i class="ri-delete-bin-line"></i></h5>
-                    <label class="my-tooltip" for="">DELETE POST</label>
+</section> -->
+<section id="main" class="container-fluid">
+    <div class="row h-100">
+      <div class="col-lg-2 col-md-12">
+        <div class="brand p-3" routerLink="">
+          <div class="img--wrap">
+            <img class="w-100" src="../assets/img/full.png" alt="">
+          </div>
+        </div>
+        <ul class="nav-links d-none-on-mobile">
+          <li class="nav-link"><a href="" routerLink="about">About Alias <i class="ri-building-4-line link--tooltip"></i></a></li>
+          <li class="nav-link"><a href="" routerLink="contact">Contact <i class="ri-mail-send-line link--tooltip"></i></a></li>
+          <div class="side-menu-divisor" *ngIf="authServe.userData | async">
+              <label for="">Admin Area</label>
+          </div>
+          <li class="nav-link" *ngIf="authServe.userData | async"><a routerLink="new">New Post <i class="ri-add-circle-line link--tooltip"></i></a></li>
+          <li class="nav-link" *ngIf="authServe.userData | async"><a routerLink="admin">Admin Panel <i class="ri-lock-line link--tooltip"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-10 col-md-12 scrollable">
+        <div id="results" class="h-100 w-100 p-3">
+            <div class="d-flex flex-column post--wrap 90-on-desktop" *ngFor="let post of posts, let i = index">
+                <div class="post row">
+                    <div class="col-lg-4" (click)="readPost(post, i)">
+                        <h4>{{ post.title }}</h4>
+                        <h5>{{ post.author }}</h5>
+                        <p class="muted">{{ post.publishingdate | date:'MM-dd-yy hh:mm a '}}</p>
+                    </div>
+                    <div class="col-lg-4" (click)="readPost(post, i)">
+                        <p class="muted">{{ post.body | slice:0:120}}...</p>
+                    </div>
+                    <div class="col-lg-3" (click)="readPost(post, i)">
+                        <div class="post--img--wrap w-100">
+                            <img class="w-100" [src]="post.coverimage" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-1 buttons-col">
+                        <!-- <div class="round--btn primary" (click)="selectPost(post, i)">
+                            <h5><i class="ri-pencil-line"></i></h5>
+                            <label class="my-tooltip" for="">EDIT POST</label>
+                        </div> -->
+                        <div class="round--btn danger"  >
+                            <h5><i class="ri-error-warning-line"></i></h5>
+                            <label class="my-tooltip" for="">REPORT</label>
+                        </div>
+                        <div class="round--btn danger" (click)="deletePost(post, i)">
+                            <h5><i class="ri-delete-bin-line"></i></h5>
+                            <label class="my-tooltip" for="">DELETE POST</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+      </div>
     </div>
-</div>
+  </section>
+
 <!-- Modal -->
 <section id="reader" class="d-none">
     <section class="d-flex flex-column wrap" *ngIf="currentPost">
         <div class="d-flex justify-content-end p-3">
             <div class="round--btn danger" (click)="closePost()">
-                <h5><i class="ri-close-line"></i></h5>
+                <h5 class="d-flex"><i class="ri-close-line"></i></h5>
             </div>
         </div>
         <div class="head d-flex flex-column align-items-center p-3">
